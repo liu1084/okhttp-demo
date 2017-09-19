@@ -1,0 +1,498 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "<your API version>",
+    "title": "<your API title>",
+    "description": "<your API description>",
+    "termsOfService": "<your API terms of service>"
+  },
+  "host": "10.4.53.48:9090",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/utf/": {
+      "get": {
+        "description": null,
+        "operationId": null,
+        "parameters": [
+          {
+            "name": "_",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/utf/login": {
+      "get": {
+        "description": null,
+        "operationId": null,
+        "parameters": [],
+        "responses": {
+          "302": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/utf/user/login": {
+      "post": {
+        "description": null,
+        "operationId": null,
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/utf/menu/getMenus": {
+      "get": {
+        "description": null,
+        "operationId": null,
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "menuNum": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "menuLevel": {
+                    "type": "number"
+                  },
+                  "menuType": {
+                    "type": "number"
+                  },
+                  "menuOrder": {
+                    "type": "number"
+                  },
+                  "menuIcon": {
+                    "type": "string"
+                  },
+                  "location": {
+                    "type": "string"
+                  },
+                  "menuParentId": {
+                    "type": "null"
+                  },
+                  "children": {
+                    "type": "array",
+                    "items": {}
+                  }
+                },
+                "required": [
+                  "id",
+                  "menuNum",
+                  "name",
+                  "menuLevel",
+                  "menuType",
+                  "menuOrder",
+                  "menuIcon",
+                  "location",
+                  "menuParentId",
+                  "children"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/utf/projectsByUser": {
+      "get": {
+        "description": null,
+        "operationId": null,
+        "parameters": [
+          {
+            "name": "_",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "account": {
+                    "type": "string"
+                  },
+                  "pjNo": {
+                    "type": "string"
+                  },
+                  "pjName": {
+                    "type": "string"
+                  },
+                  "osType": {
+                    "type": "string"
+                  },
+                  "ifDefault": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "account",
+                  "pjNo",
+                  "pjName",
+                  "osType",
+                  "ifDefault"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/utf/dashboard": {
+      "get": {
+        "description": null,
+        "operationId": null,
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/utf/user/dashboardManager/caseSet/UTFtest002": {
+      "get": {
+        "description": null,
+        "operationId": null,
+        "parameters": [
+          {
+            "name": "_",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "execCases": {
+                        "type": "array",
+                        "items": {}
+                      },
+                      "deviceExecCases": {
+                        "type": "array",
+                        "items": {}
+                      },
+                      "taskExecs": {
+                        "type": "array",
+                        "items": {}
+                      },
+                      "caseGroupCounts": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "parentId": {
+                              "type": "string"
+                            },
+                            "caseCount": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "parentId",
+                            "caseCount"
+                          ]
+                        }
+                      },
+                      "projId": {
+                        "type": "string"
+                      },
+                      "projName": {
+                        "type": "string"
+                      },
+                      "caseCount": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "code": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/utf/user/dashboardManager/deviceExec/UTFtest002": {
+      "get": {
+        "description": null,
+        "operationId": null,
+        "parameters": [
+          {
+            "name": "_",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "deviceModel": {
+                        "type": "string"
+                      },
+                      "deviceManufacturer": {
+                        "type": "string"
+                      },
+                      "execCaseCount": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "deviceModel",
+                      "deviceManufacturer",
+                      "execCaseCount"
+                    ]
+                  }
+                },
+                "code": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/utf/user/dashboardManager/projects/UTFtest002": {
+      "get": {
+        "description": null,
+        "operationId": null,
+        "parameters": [
+          {
+            "name": "_",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "execCases": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "caseCount": {
+                              "type": "number"
+                            },
+                            "date": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "caseCount",
+                            "date"
+                          ]
+                        }
+                      },
+                      "deviceExecCases": {
+                        "type": "array",
+                        "items": {}
+                      },
+                      "taskExecs": {
+                        "type": "array",
+                        "items": {}
+                      },
+                      "caseGroupCounts": {
+                        "type": "array",
+                        "items": {}
+                      },
+                      "projId": {
+                        "type": "string"
+                      },
+                      "projName": {
+                        "type": "string"
+                      },
+                      "caseCount": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "code": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/utf/user/dashboardManager/sceneExec/UTFtest002": {
+      "get": {
+        "description": null,
+        "operationId": null,
+        "parameters": [
+          {
+            "name": "_",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "execCases": {
+                        "type": "array",
+                        "items": {}
+                      },
+                      "deviceExecCases": {
+                        "type": "array",
+                        "items": {}
+                      },
+                      "taskExecs": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "beginDate": {
+                              "type": "number"
+                            },
+                            "caseRate": {
+                              "type": "string"
+                            },
+                            "caseCount": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "beginDate",
+                            "caseRate",
+                            "caseCount"
+                          ]
+                        }
+                      },
+                      "caseGroupCounts": {
+                        "type": "array",
+                        "items": {}
+                      },
+                      "projId": {
+                        "type": "string"
+                      },
+                      "projName": {
+                        "type": "string"
+                      },
+                      "caseCount": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "code": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/utf/user/logout": {
+      "get": {
+        "description": null,
+        "operationId": null,
+        "parameters": [],
+        "responses": {
+          "302": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

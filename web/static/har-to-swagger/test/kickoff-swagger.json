@@ -1,0 +1,92 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "<your API version>",
+    "title": "<your API title>",
+    "description": "<your API description>",
+    "termsOfService": "<your API terms of service>"
+  },
+  "host": "10.4.53.48:9090",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/utf/admin/userManager/kickoff": {
+      "post": {
+        "description": null,
+        "operationId": null,
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "account": {
+                    "type": "string"
+                  },
+                  "sessionId": {
+                    "type": "string"
+                  },
+                  "signInDatetime": {
+                    "type": "number"
+                  },
+                  "ipAddress": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "number"
+                  },
+                  "signOutReason": {
+                    "type": "number"
+                  },
+                  "createAt": {
+                    "type": "number"
+                  },
+                  "updateAt": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "id",
+                  "account",
+                  "sessionId",
+                  "signInDatetime",
+                  "ipAddress",
+                  "status",
+                  "signOutReason",
+                  "createAt",
+                  "updateAt"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

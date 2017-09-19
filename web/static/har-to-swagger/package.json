@@ -1,0 +1,31 @@
+{
+  "name": "har-to-swagger",
+  "version": "0.1.8",
+  "dependencies": {
+    "debug": "~2.2.0",
+    "generate-schema": "guangyang/generate-schema",
+    "har": "^1.0.0",
+    "string": "^3.3.1",
+    "swagger-parser": "^3.3.0",
+    "underscore": "^1.8.3"
+  },
+  "description": "A library to generate Swagger 2.0 JSON format of an API from its sample HAR file.",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guangyang/har-to-swagger.git"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "author": "Guang Yang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/guangyang/har-to-swagger/issues"
+  },
+  "homepage": "https://github.com/guangyang/har-to-swagger"
+}
