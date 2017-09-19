@@ -16,7 +16,7 @@ To get an absolute path to this directory for static file serving, use the expor
 ```javascript
 const swaggerUiAssetPath = require("swagger-ui-dist").getAbsoluteFSPath()
 
-// then instantiate server that serves files from the swaggerUiAssetPath
+controller
 ```
 
 For anything else, check the [Swagger-UI](https://github.com/swagger-api/swagger-ui) repository.

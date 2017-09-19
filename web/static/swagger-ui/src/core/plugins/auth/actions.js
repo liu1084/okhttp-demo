@@ -1,5 +1,5 @@
 import win from "core/window"
-import { btoa, buildFormData } from "core/utils"
+import {btoa, buildFormData} from "core/utils"
 
 export const SHOW_AUTH_POPUP = "show_popup"
 export const AUTHORIZE = "authorize"
@@ -32,24 +32,28 @@ export function logout(payload) {
   }
 }
 
-export const preAuthorizeImplicit = (payload) => ( { authActions, errActions } ) => {
-  let { auth , token, isValid } = payload
-  let { schema, name } = auth
+export const preAuthorizeImplicit = (payload) =
+>
+( {authActions, errActions} ) =
+>
+{
+  let {auth, token, isValid} = payload
+  let {schema, name} = auth
   let flow = schema.get("flow")
 
   // remove oauth2 property from window after redirect from authentication
   delete win.swaggerUIRedirectOauth2
 
-  if ( flow !== "accessCode" && !isValid ) {
-    errActions.newAuthErr( {
+  if (flow !== "accessCode" && !isValid) {
+    errActions.newAuthErr({
       authId: name,
       source: "auth",
       level: "warning",
-      message: "Authorization may be unsafe, passed state was changed in server Passed state wasn't returned from auth server"
+      message: "Authorization may be unsafe, passed state was changed in controller Passed state wasn't returned from auth controller"
     })
   }
 
-  if ( token.error ) {
+  if (token.error) {
     errActions.newAuthErr({
       authId: name,
       source: "auth",
@@ -59,7 +63,7 @@ export const preAuthorizeImplicit = (payload) => ( { authActions, errActions } )
     return
   }
 
-  authActions.authorizeOauth2({ auth, token })
+  authActions.authorizeOauth2({auth, token})
 }
 
 export function authorizeOauth2(payload) {
@@ -69,8 +73,12 @@ export function authorizeOauth2(payload) {
   }
 }
 
-export const authorizePassword = ( auth ) => ( { authActions } ) => {
-  let { schema, name, username, password, passwordType, clientId, clientSecret } = auth
+export const authorizePassword = ( auth ) =
+>
+( {authActions} ) =
+>
+{
+  let {schema, name, username, password, passwordType, clientId, clientSecret} = auth
   let form = {
     grant_type: "password",
     scope: encodeURIComponent(auth.scopes.join(scopeSeparator))
@@ -78,16 +86,16 @@ export const authorizePassword = ( auth ) => ( { authActions } ) => {
   let query = {}
   let headers = {}
 
-  if ( passwordType === "basic") {
+  if (passwordType === "basic") {
     headers.Authorization = "Basic " + btoa(username + ":" + password)
   } else {
     Object.assign(form, {username}, {password})
 
-    if ( passwordType === "query") {
-      if ( clientId ) {
+    if (passwordType === "query") {
+      if (clientId) {
         query.client_id = clientId
       }
-      if ( clientSecret ) {
+      if (clientSecret) {
         query.client_secret = clientSecret
       }
     } else {
@@ -95,11 +103,15 @@ export const authorizePassword = ( auth ) => ( { authActions } ) => {
     }
   }
 
-  return authActions.authorizeRequest({ body: buildFormData(form), url: schema.get("tokenUrl"), name, headers, query, auth})
+  return authActions.authorizeRequest({body: buildFormData(form), url: schema.get("tokenUrl"), name, headers, query, auth})
 }
 
-export const authorizeApplication = ( auth ) => ( { authActions } ) => {
-  let { schema, scopes, name, clientId, clientSecret } = auth
+export const authorizeApplication = ( auth ) =
+>
+( {authActions} ) =
+>
+{
+  let {schema, scopes, name, clientId, clientSecret} = auth
   let headers = {
     Authorization: "Basic " + btoa(clientId + ":" + clientSecret)
   }
@@ -108,11 +120,15 @@ export const authorizeApplication = ( auth ) => ( { authActions } ) => {
     scope: scopes.join(scopeSeparator)
   }
 
-  return authActions.authorizeRequest({body: buildFormData(form), name, url: schema.get("tokenUrl"), auth, headers })
+  return authActions.authorizeRequest({body: buildFormData(form), name, url: schema.get("tokenUrl"), auth, headers})
 }
 
-export const authorizeAccessCodeWithFormParams = ( { auth, redirectUrl } ) => ( { authActions } ) => {
-  let { schema, name, clientId, clientSecret } = auth
+export const authorizeAccessCodeWithFormParams = ( {auth, redirectUrl} ) =
+>
+( {authActions} ) =
+>
+{
+  let {schema, name, clientId, clientSecret} = auth
   let form = {
     grant_type: "authorization_code",
     code: auth.code,
@@ -124,8 +140,12 @@ export const authorizeAccessCodeWithFormParams = ( { auth, redirectUrl } ) => ( 
   return authActions.authorizeRequest({body: buildFormData(form), name, url: schema.get("tokenUrl"), auth})
 }
 
-export const authorizeAccessCodeWithBasicAuthentication = ( { auth, redirectUrl } ) => ( { authActions } ) => {
-  let { schema, name, clientId, clientSecret } = auth
+export const authorizeAccessCodeWithBasicAuthentication = ( {auth, redirectUrl} ) =
+>
+( {authActions} ) =
+>
+{
+  let {schema, name, clientId, clientSecret} = auth
   let headers = {
     Authorization: "Basic " + btoa(clientId + ":" + clientSecret)
   }
@@ -139,9 +159,13 @@ export const authorizeAccessCodeWithBasicAuthentication = ( { auth, redirectUrl 
   return authActions.authorizeRequest({body: buildFormData(form), name, url: schema.get("tokenUrl"), auth, headers})
 }
 
-export const authorizeRequest = ( data ) => ( { fn, authActions, errActions, authSelectors } ) => {
-  let { body, query={}, headers={}, name, url, auth } = data
-  let { additionalQueryStringParams } = authSelectors.getConfigs() || {}
+export const authorizeRequest = ( data ) =
+>
+( {fn, authActions, errActions, authSelectors} ) =
+>
+{
+  let {body, query = {}, headers = {}, name, url, auth} = data
+  let {additionalQueryStringParams} = authSelectors.getConfigs() || {}
   let fetchUrl = url
 
   for (let key in additionalQueryStringParams) {
@@ -149,7 +173,7 @@ export const authorizeRequest = ( data ) => ( { fn, authActions, errActions, aut
   }
 
   let _headers = Object.assign({
-    "Accept":"application/json, text/plain, */*",
+    "Accept": "application/json, text/plain, */*",
     "Content-Type": "application/x-www-form-urlencoded"
   }, headers)
 
@@ -160,42 +184,42 @@ export const authorizeRequest = ( data ) => ( { fn, authActions, errActions, aut
     query: query,
     body: body
   })
-  .then(function (response) {
-    let token = JSON.parse(response.data)
-    let error = token && ( token.error || "" )
-    let parseError = token && ( token.parseError || "" )
+    .then(function (response) {
+      let token = JSON.parse(response.data)
+      let error = token && ( token.error || "" )
+      let parseError = token && ( token.parseError || "" )
 
-    if ( !response.ok ) {
-      errActions.newAuthErr( {
-        authId: name,
-        level: "error",
-        source: "auth",
-        message: response.statusText
-      } )
-      return
-    }
+      if (!response.ok) {
+        errActions.newAuthErr({
+          authId: name,
+          level: "error",
+          source: "auth",
+          message: response.statusText
+        })
+        return
+      }
 
-    if ( error || parseError ) {
-      errActions.newAuthErr({
-        authId: name,
-        level: "error",
-        source: "auth",
-        message: JSON.stringify(token)
-      })
-      return
-    }
+      if (error || parseError) {
+        errActions.newAuthErr({
+          authId: name,
+          level: "error",
+          source: "auth",
+          message: JSON.stringify(token)
+        })
+        return
+      }
 
-    authActions.authorizeOauth2({ auth, token})
-  })
-  .catch(e => {
+      authActions.authorizeOauth2({auth, token})
+    })
+    .catch(e = > {
     let err = new Error(e)
-    errActions.newAuthErr( {
-      authId: name,
-      level: "error",
-      source: "auth",
-      message: err.message
-    } )
+    errActions.newAuthErr({
+    authId: name,
+    level: "error",
+    source: "auth",
+    message: err.message
   })
+})
 }
 
 export function configureAuth(payload) {

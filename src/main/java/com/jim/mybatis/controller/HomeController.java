@@ -1,4 +1,4 @@
-package com.jim.mybatis.server;
+package com.jim.mybatis.controller;
 
 import com.jim.mybatis.model.IBook;
 import com.jim.mybatis.model.dto.BookDTO;

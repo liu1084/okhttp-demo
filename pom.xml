@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.neusoft.unieap.utf</groupId>
-    <artifactId>fiddler-json-client</artifactId>
+    <artifactId>okhttp-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>fiddler-json-client</name>
+    <name>okhttp-demo</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -20,6 +20,8 @@
             <url>http://central.maven.org/maven2/</url>
         </repository>
     </repositories>
+
+    
 
     <dependencies>
         <dependency>
@@ -77,6 +79,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.3.10.RELEASE</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp-urlconnection</artifactId>
             <version>3.9.0</version>
@@ -101,16 +109,21 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
+            <artifactId>spring-beans</artifactId>
             <version>4.3.10.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
+            <artifactId>spring-tx</artifactId>
             <version>4.3.10.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>4.3.6.RELEASE</version>
+        </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
