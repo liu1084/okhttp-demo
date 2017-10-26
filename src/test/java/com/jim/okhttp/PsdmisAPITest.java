@@ -21,7 +21,7 @@ public class PsdmisAPITest {
 
     @DataProvider(name = "usernamePassword")
     private static Object[][] usernamePasswordProvider() {
-        return new Object[][]{{"jun.liu.neu", "12345"}};
+        return new Object[][]{{"username", "******"}};
     }
 
     /**
@@ -37,7 +37,7 @@ public class PsdmisAPITest {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://10.4.44.97:9999/psdmis/j_spring_security_check")
+                .url("http://xxx.xxx.xx/j_spring_security_check")
                 .post(requestBody)
                 .build();
 
@@ -57,7 +57,7 @@ public class PsdmisAPITest {
 
         MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=UTF-8");
         Request request = new Request.Builder()
-                .url("http://10.4.44.97:9999/psdmis/techcomp/ria/commonProcessor!commonMethod.action")
+                .url("http://xxx.xxx.xxx/techcomp/ria/commonProcessor!commonMethod.action")
                 .post(RequestBody.create(MEDIA_TYPE_JSON, dc.getBytes("UTF8")))
                 .addHeader("X-Requested-With", "XMLHttpRequest")
                 .addHeader("ajaxRequest", "true")
@@ -80,7 +80,7 @@ public class PsdmisAPITest {
 
         MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=UTF-8");
         Request request = new Request.Builder()
-                .url("http://10.4.44.97:9999/psdmis/techcomp/ria/commonProcessor!commonMethod.action?t=1505361749806")
+                .url("http://xxx.xxx.xxx/techcomp/ria/commonProcessor!commonMethod.action?t=1505361749806")
                 .post(RequestBody.create(MEDIA_TYPE_JSON, dc.getBytes("UTF8")))
                 .addHeader("X-Requested-With", "XMLHttpRequest")
                 .addHeader("ajaxRequest", "true")
