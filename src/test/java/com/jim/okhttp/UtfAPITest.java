@@ -32,11 +32,11 @@ public class UtfAPITest {
     public void testLoginAPI() throws IOException {
         RequestBody requestBody = new FormBody.Builder()
                 .add("username", "admin")
-                .add("password", "1")
+                .add("password", "*****")
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://10.4.53.48:9090/utf/user/login")
+                .url("http://xxx.xxx.xxx/utf/user/login")
                 .post(requestBody)
                 .build();
 
@@ -54,7 +54,7 @@ public class UtfAPITest {
     @Test(enabled = false, dependsOnMethods = {"testLoginAPI"})
     public void testGetMenus() throws IOException {
         Request request = new Request.Builder()
-                .url("http://10.4.53.48:9090/utf/menu/getMenus")
+                .url("http://xxx.xxx.xxx/utf/menu/getMenus")
                 .build();
         OkHttpClient client = MyOKHttpClient.getInstance();
         Response response = client.newCall(request).execute();
@@ -71,7 +71,7 @@ public class UtfAPITest {
     @Test(enabled = false, dependsOnMethods = {"testLoginAPI"})
     public void testOnlineAPI() throws IOException {
         Request request = new Request.Builder()
-                .url("http://10.4.53.48:9090/utf//admin/userManager/online")
+                .url("http://xxx.xxx.xxx/utf//admin/userManager/online")
                 .get()
                 .build();
 
@@ -93,7 +93,7 @@ public class UtfAPITest {
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         RequestBody requestBody = RequestBody.create(JSON, users.toString());
         Request request = new Request.Builder()
-                .url("http://10.4.53.48:9090/utf//admin/userManager/kickoff")
+                .url("http://xxx.xxx.xxx/utf//admin/userManager/kickoff")
                 .post(requestBody)
                 .build();
 
@@ -116,7 +116,7 @@ public class UtfAPITest {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://10.4.53.48:9090/utf/admin/equipmentManage/upload/8a84b5b05e5a32f8015e6ea92afb0066/LENOVO%20Lenovo%20X3c70")
+                .url("http://xxx.xxx.xxx/utf/admin/equipmentManage/upload/8a84b5b05e5a32f8015e6ea92afb0066/LENOVO%20Lenovo%20X3c70")
                 .post(requestBody)
                 .build();
 
@@ -129,7 +129,7 @@ public class UtfAPITest {
     @Test(enabled = false, dependsOnMethods = {"testLoginAPI"})
     public void downloadFile() throws IOException {
         Request request = new Request.Builder()
-                .url("http://10.4.53.48:9090/utf/projectApplicationManager/apps/download/8a84b5b05e5a32f8015e5f3a66a40054")
+                .url("http://xxx.xxx.xxx/utf/projectApplicationManager/apps/download/8a84b5b05e5a32f8015e5f3a66a40054")
                 .addHeader("Content-Type", "application/json")
                 .get()
                 .build();
@@ -139,7 +139,7 @@ public class UtfAPITest {
         JSONObject jsonObject = new JSONObject(response.body().string());
         String downloadLink = jsonObject.getString("result");
 
-        String baseUrl = "http://10.4.53.48:9090/utf";
+        String baseUrl = "http://xxx.xxx.xxx/utf";
         String fileUrl = baseUrl + downloadLink;
         request = new Request.Builder()
                 .url(fileUrl)
